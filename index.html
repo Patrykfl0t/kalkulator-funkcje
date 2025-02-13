@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkulator</title>
+
+    <script>
+        function kalkulator(a, b, operacja) {
+            switch(operacja){
+                case'+':return a + b ;
+                case'-':return a - b ;
+                case'*':return a * b ;
+                case'/':return b !== 0 ? a / b: "nie mozna dzielic przez zero";
+                default:return "nieprawidlowy operator"; 
+            }
+        }
+
+        function dane() {
+            let liczba1 = parseFloat(prompt("podaj pierwsza liczbe"));
+            let liczba2 = parseFloat(prompt("podaj druga liczbe"));
+            let znak = prompt("wybierz dzialanie: +, -, *, /");
+
+            if(isNaN(liczba1) || isNaN(liczba2)){
+                document.getElementById("wynik").innerText = "blad, podane zle liczby";
+                return;
+            }
+            let wynik = kalkulator(liczba1, liczba2, znak);
+            document.getElementById("wynik").innerText = `wynik: ${wynik}`;
+        }
+    </script>
+
+</head>
+<body>
+    <h1>kalkulator</h1>
+    <button onclick="dane()">oblicz</button>
+    <p id="wynik"></p>
+</body>
+</html>
